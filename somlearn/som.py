@@ -51,20 +51,21 @@ class SOM(BaseEstimator, ClusterMixin):
 
     compactsupport : bool, optional (default=True)
         Cut off map updates beyond the training radius with the Gaussian neighborhood.
-            
+
     neighborhood : str, optional (default='gaussian')
         Specify the neighborhood. If ``neighborhood='gaussian'`` use
         Gaussian neighborhood. Else if `neighborhood='bubble'`` use
         bubble neighborhood function.
 
     std_coeff : float, optional (default=0.5)
-        Set the coefficient in the Gaussian neighborhood :math:`exp(-||x-y||^2/(2*(coeff*radius)^2))`.
-    
+        Set the coefficient in the Gaussian
+        neighborhood :math:`exp(-||x-y||^2/(2*(coeff*radius)^2))`.
+
     random_state : int, RandomState instance or None, optional (default=None)
         Control the randomization of the algorithm by specifying the
         codebook initalization. It is ignored when ``initialcodebook`` is
         not ``None``.
-        
+
         - If int, ``random_state`` is the seed used by the random number
           generator.
         - If ``RandomState`` instance, random_state is the random number
@@ -72,15 +73,9 @@ class SOM(BaseEstimator, ClusterMixin):
         - If ``None``, the random number generator is the ``RandomState``
           instance used by ``np.random``.
 
-    verbose : int, optional (default=0) 
+    verbose : int, optional (default=0)
         Specify verbosity level (0, 1, or 2).
 
-    Attributes
-    ----------
-
-    Examples
-    --------
-    
     """
 
     _attributes = ['train', 'codebook', 'bmus']
@@ -166,7 +161,9 @@ class SOM(BaseEstimator, ClusterMixin):
 
         # Generate grid topological neighbors
         grid_topological_neighbors = [
-            product([grid_label], self._return_topological_neighbors(*grid_label))
+            product(
+                [tuple(grid_label)], self._return_topological_neighbors(*grid_label)
+            )
             for grid_label in grid_labels
         ]
 
@@ -256,7 +253,9 @@ class SOM(BaseEstimator, ClusterMixin):
         )
 
         # Generate labels neighbors
-        self.neighbors_ = self._generate_neighbors(grid_labels, self.labels_mapping_)
+        self.neighbors_ = self._generate_neighbors(
+            np.unique(grid_labels, axis=0), self.labels_mapping_
+        )
 
         return self
 

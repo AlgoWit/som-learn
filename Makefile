@@ -29,7 +29,7 @@ code-format:
 	black -S somlearn examples/*.py
 
 code-analysis:
-	flake8 somlearn --max-line-length=88 | grep -v __init__
+	flake8 somlearn --max-line-length=88
 	pylint -E somlearn/ -d E1103,E0611,E1101
 
 upload-pypi:

@@ -1,10 +1,10 @@
 package:
   name: som-learn
-  version: "0.1.0"
+  version: "0.1.1"
 
 source:
-  url: "https://files.pythonhosted.org/packages/00/ac/d0e34b911be803a2aa80f3c9d2de2314f68703bda38b4f4f4b7f9cc83265/som-learn-0.1.0.tar.gz"
-  sha256: "b79be1c31753c2e436fc9226c784ccdbf08afc0b362ec6d12fc05e0888062958"
+  url: "https://files.pythonhosted.org/packages/0c/1e/623af267dd014bb28fe802ac942791bc9e1cc0330d97f1cfd26550a9fc2a/som-learn-0.1.1.tar.gz"
+  sha256: "978494df479d43156a047d90935dfdda1664efa25daa4f2946a9e4304860d172"
 
 build:
   number: 0

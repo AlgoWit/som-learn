@@ -2,7 +2,6 @@
 Test the som module.
 """
 
-import pytest
 import numpy as np
 from sklearn.datasets import make_classification
 
